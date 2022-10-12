@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model TrophyDetailsViewModel
+<h1 class="text-primary">@Model.trophy.Name Details</h1>
+
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th scope="row">Name</th>
+            <td>@Model.trophy.Name</td>
+        </tr>
+        <tr>
+            <th scope="row">Venue</th>
+            <td>@Model.trophy.Venue</td>
+        </tr>
+        <tr>
+            <th scope="row">Closing date</th>
+            <td>@Model.trophy.ClosingDate</td>
+        </tr>
+    </tbody>
+</table>
+<h3 class="text-primary mt-5">Regisered players</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">
+                Name
+            </th>
+            <th scope="col">
+                Age
+            </th>
+            <th scope="col">
+                Role
+            </th>
+            <th scope="col">
+                Hand
+            </th>
+            <th scope="col">
+                Team
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.registrations)
+        {
+            <tr>
+                <td>@item.PlayerFName</td>
+                <td>@item.PlayerAge</td>
+                <td>@item.PlayerRole</td>
+                <td>@item.PlayerHand</td>
+                <td>@item.CurrentTeam</td>
+            </tr>
+        }
+    </tbody>
+</table>

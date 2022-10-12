@@ -54,7 +54,9 @@
                     @obj.Id
                 </td>
                 <td width="20%">
+                    <a asp-controller="Trophy" asp-action="Details" asp-route-tid=@obj.Id>
                     @obj.Name
+                    </a>
                 </td>
                 <td width="20%">
                     @obj.Venue
