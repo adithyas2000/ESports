@@ -44,7 +44,18 @@ namespace ESports.Controllers
         // GET
         public IActionResult Edit(int? id)
         {
-            return View();
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var trophyFromDb = _db.Trophies.Find(id);
+
+            if (trophyFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(trophyFromDb);
         }
 
         public IActionResult Details(int tid)
@@ -65,6 +76,58 @@ namespace ESports.Controllers
             {
                 return RedirectToAction("Index", "Trophy");
             }
+        }
+
+
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Trophy obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Trophies.Update(obj);
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+        // GET
+        public IActionResult Close(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var trophyFromDb = _db.Trophies.Find(id);
+
+            if (trophyFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(trophyFromDb);
+        }
+
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Close(int id)
+        {
+            var trophyFromDb = _db.Trophies.Find(id);
+            if (trophyFromDb == null)
+            {
+                return NotFound();
+            }
+        
+                trophyFromDb.isClosed = true;
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
+           
+           
         }
     }
 }
