@@ -1,0 +1,46 @@
+﻿@model Trophy
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <h2 class="text-primary">Update Trophy</h2>
+        <hr />
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+          <div class="mb-3">
+            <label asp-for="Venue">Event Venue</label>
+            <input asp-for="Venue" class="form-control" />
+             <span asp-validation-for="Venue" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="StartDate">Event Starting Date</label>
+            <input asp-for="StartDate" class="form-control" type="datetime"/>
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+          <div class="mb-3">
+            <label asp-for="EndDate">Event Ending Date</label>
+            <input asp-for="EndDate" class="form-control" type="datetime" />
+             <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="ClosingDate"></label>
+            <input asp-for="ClosingDate" class="form-control" type="datetime"/>
+            <span asp-validation-for="ClosingDate" class="text-danger"></span>
+        </div>
+          <div class="mb-3">
+           <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+           <a  asp-controller="Trophy" asp-action="Index" class="btn btn-secondary" style="width:150px">Back</a>
+        </div>
+        
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
