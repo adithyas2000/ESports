@@ -1,16 +1,17 @@
-﻿@model IEnumerable<Trophy>
+﻿@using ESports.Models
+@model IEnumerable<Trophy>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<div class ="container p-3">
+<div class="container p-3">
     <div class=" row pt-4">
         <div class="col-6">
             <h2 class="text-primary">Trophy List</h2>
         </div>
-         <div class="col-6 text-end">
-            <a  asp-controller="Trophy" asp-action="Create" class="btn btn-primary">Add New Trophy</a>
+        <div class="col-6 text-end">
+            <a asp-controller="Trophy" asp-action="Create" class="btn btn-primary">Add New Trophy</a>
         </div>
     </div>
 </div>
@@ -19,55 +20,71 @@
     <thead>
         <tr>
             <th>
+                Trophy ID
+            </th>
+            <th>
                 Trophy Name
             </th>
-              <th>
+            <th>
                 Event Venue
             </th>
-             <th>
-               Event Starting Date
+            <th>
+                Event Starting Date
             </th>
-              <th>
+            <th>
                 Event Ending Date
             </th>
-             <th>
+            <th>
                 Registration/Bidding Closing Date
             </th>
-            
-             <th>
+
+            <th>
                 Update
+            </th>
+            <th>
+                Register
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var obj in Model)
+        @foreach (var obj in Model)
         {
             <tr>
+                <td>
+                    @obj.Id
+                </td>
                 <td width="20%">
                     @obj.Name
                 </td>
                 <td width="20%">
                     @obj.Venue
                 </td>
-                 <td width="40%">
+                <td width="30%">
                     @obj.StartDate
                 </td>
-                <td width="40%">
+                <td width="30%">
                     @obj.EndDate
                 </td>
-                 <td width="40%">
+                <td width="30%">
                     @obj.ClosingDate
                 </td>
-               
-                 <td width="30%">
-                     <div class="w-75 btn-group" role="group">
-                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-1">
-                        Edit
-                    </a>
-                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                        Delete
-                    </a>
-                     </div>
+
+                <td width="30%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-1">
+                            Edit
+                        </a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                            Delete
+                        </a>
+                    </div>
+
+                </td>
+                <td width="30%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Registration" asp-action="Enroll" class="btn-primary btn" asp-route-tid=@obj.Id>Register</a>
+                        
+                    </div>
                 </td>
             </tr>
         }

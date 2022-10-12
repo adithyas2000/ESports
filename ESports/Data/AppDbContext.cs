@@ -10,8 +10,13 @@ namespace ESports.Data
         {
             
         }
-        public DbSet<Player> Players { get; set; }
         public DbSet<TrophyRegistration> TrophyRegistrations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TrophyRegistration>()
+                .HasKey(o => new { o.TrophyID,o.PlayerNIC });
+        }
         public DbSet<Trophy> Trophies { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ESports.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221011142802_InitTrophy2")]
-    partial class InitTrophy2
+    [Migration("20221012073420_NewDb")]
+    partial class NewDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

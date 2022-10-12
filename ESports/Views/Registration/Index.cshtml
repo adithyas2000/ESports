@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model TrophyRegistration
+@{
+    ViewData["Title"] = "Register for a trophy";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <h2 class="text-primary">Create Trophy</h2>
+        <hr />
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="PlayerFName"></label>
+            <input asp-for="PlayerFName" class="form-control" />
+            @*<span asp-validation-for="Name" class="text-danger"></span>*@
+        </div>
+          <div class="mb-3">
+            <label asp-for="PlayerLName">Player First Name</label>
+            <input asp-for="PlayerLName" class="form-control" />
+             @*<span asp-validation-for="Venue" class="text-danger"></span>*@
+        </div>
+         <div class="mb-3">
+            <label asp-for="PlayerNIC">Player NIC</label>
+            <input asp-for="PlayerNIC" class="form-control" />
+            @*<span asp-validation-for="StartDate" class="text-danger"></span>*@
+        </div>
+          <div class="mb-3">
+            <label asp-for="PlayerAge">Event Ending Date</label>
+            <input asp-for="PlayerAge" class="form-control" />
+             @*<span asp-validation-for="EndDate" class="text-danger"></span>*@
+        </div>
+         <div class="mb-3">
+            <label asp-for="PlayerRole"></label>
+            <input asp-for="PlayerRole" class="form-control" />
+            @*<span asp-validation-for="ClosingDate" class="text-danger"></span>*@
+        </div>
+        <div class="mb-3">
+            <label asp-for="PlayerHand"></label>
+            <input asp-for="PlayerHand" class="form-control" />
+            @*<span asp-validation-for="ClosingDate" class="text-danger"></span>*@
+        </div>
+        <div class="mb-3">
+            <label asp-for="CurrentTeam"></label>
+            <input asp-for="CurrentTeam" class="form-control" />
+            @*<span asp-validation-for="ClosingDate" class="text-danger"></span>*@
+        </div>
+          <div class="mb-3">
+           <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+           <a  asp-controller="Trophy" asp-action="Index" class="btn btn-secondary" style="width:150px">Back</a>
+        </div>
+        
+    </div>
+</form>
