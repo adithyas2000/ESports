@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<TrophyRegistration>
+@{
+    ViewData["Title"] = "Player Index";
+}
+<h1 class="text-primary">Player List</h1>
+
+
+<table class="table table-bordered table-striped" style="width: 100%">
+    <thead>
+        <tr>
+            <th>
+                Player Name
+            </th>
+            <th>
+                Player Role
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Player" asp-action="Profile" asp-route-nic=@item.PlayerNIC>
+                    @item.PlayerFName
+                    </a>
+                </td>
+                <td width="20%">
+                    @item.PlayerRole
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
