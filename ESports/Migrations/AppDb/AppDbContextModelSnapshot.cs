@@ -22,39 +22,6 @@ namespace ESports.Migrations.AppDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ESports.Models.Player", b =>
-                {
-                    b.Property<string>("PlayerNIC")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CurrentTeam")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PlayerAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PlayerFName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PlayerHand")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PlayerLName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PlayerRole")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PlayerNIC");
-
-                    b.ToTable("Players");
-                });
-
             modelBuilder.Entity("ESports.Models.Trophy", b =>
                 {
                     b.Property<int>("Id")
@@ -90,8 +57,8 @@ namespace ESports.Migrations.AppDb
 
             modelBuilder.Entity("ESports.Models.TrophyRegistration", b =>
                 {
-                    b.Property<string>("TrophyID")
-                        .HasColumnType("nvarchar(450)")
+                    b.Property<int>("TrophyID")
+                        .HasColumnType("int")
                         .HasColumnOrder(0);
 
                     b.Property<string>("PlayerNIC")

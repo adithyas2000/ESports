@@ -46,5 +46,25 @@ namespace ESports.Controllers
         {
             return View();
         }
+
+        public IActionResult Details(int tid)
+        {
+            var trophy = _db.Trophies.Find(tid);
+            if (trophy != null)
+            {
+                var playerList = _db.TrophyRegistrations.Where(a => a.TrophyID == trophy.Id).ToList();
+                TrophyDetailsViewModel trophyDetails = new TrophyDetailsViewModel();
+                trophyDetails.trophy = trophy;
+                trophyDetails.registrations = playerList;
+
+
+
+                return View(trophyDetails);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Trophy");
+            }
+        }
     }
 }

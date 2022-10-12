@@ -6,7 +6,7 @@ namespace ESports.Models
     public class TrophyRegistration
     {
         [Key,Column(Order=0)]
-        public string TrophyID { get; set; }
+        public int TrophyID { get; set; }
         [Key,Column(Order =1)]
         public string PlayerNIC { get; set; }
         [Required]

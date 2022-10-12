@@ -22,7 +22,7 @@ namespace ESports.Controllers
             TrophyRegistration trophyregistration = new TrophyRegistration();
             Trophy trophy = new Trophy();
 
-            trophyregistration.TrophyID = tid;
+            trophyregistration.TrophyID = int.Parse(tid);
 
             int trophyid = int.Parse(tid);
             trophy.Id = trophyid;
