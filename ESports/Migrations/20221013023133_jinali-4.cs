@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ESports.Migrations
 {
-    public partial class jinali3 : Migration
+    public partial class jinali4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +39,8 @@ namespace ESports.Migrations
                     PlayerAge = table.Column<int>(type: "int", nullable: false),
                     PlayerRole = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PlayerHand = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CurrentTeam = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CurrentTeam = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BaseFee = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

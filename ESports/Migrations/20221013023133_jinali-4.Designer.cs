@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ESports.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221012141224_jinali-3")]
-    partial class jinali3
+    [Migration("20221013023133_jinali-4")]
+    partial class jinali4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,9 @@ namespace ESports.Migrations
                     b.Property<string>("PlayerNIC")
                         .HasColumnType("nvarchar(450)")
                         .HasColumnOrder(1);
+
+                    b.Property<int>("BaseFee")
+                        .HasColumnType("int");
 
                     b.Property<string>("CurrentTeam")
                         .IsRequired()

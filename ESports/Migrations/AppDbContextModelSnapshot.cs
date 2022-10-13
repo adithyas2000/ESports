@@ -68,6 +68,9 @@ namespace ESports.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasColumnOrder(1);
 
+                    b.Property<int>("BaseFee")
+                        .HasColumnType("int");
+
                     b.Property<string>("CurrentTeam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
