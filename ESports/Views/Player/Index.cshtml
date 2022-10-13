@@ -17,7 +17,10 @@
             <th>
                 Player Role
             </th>
-           
+            <th>
+                Player Availablity
+            </th>
+
         </tr>
     </thead>
     <tbody>
@@ -26,12 +29,26 @@
             <tr>
                 <td>
                     <a asp-controller="Player" asp-action="Profile" asp-route-nic=@item.PlayerNIC>
-                    @item.PlayerFName
+                        @item.PlayerFName @item.PlayerLName
                     </a>
                 </td>
                 <td width="20%">
                     @item.PlayerRole
                 </td>
+
+                @if (item.CurrentTeam == "NULL")
+                {
+                    <td width="20%">
+                        Available
+                    </td>
+                }
+                else
+                {
+                    <td width="20%">
+                        Sold
+                    </td>
+                }
+
             </tr>
         }
     </tbody>

@@ -48,7 +48,12 @@
         @foreach (var item in Model.registrations)
         {
             <tr>
-                <td>@item.PlayerFName</td>
+                <td>
+                    <a asp-controller="Player" asp-action="Profile" asp-route-nic=@item.PlayerNIC>
+                        @item.PlayerFName @item.PlayerLName
+                    </a>
+
+                </td>
                 <td>@item.PlayerAge</td>
                 <td>@item.PlayerRole</td>
                 <td>@item.PlayerHand</td>

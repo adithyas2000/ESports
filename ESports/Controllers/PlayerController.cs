@@ -13,19 +13,36 @@ namespace ESports.Controllers
         }
         public IActionResult Index()
         {
-            var playerList = _db.TrophyRegistrations.Where(a=>a.CurrentTeam=="NULL").ToList();
+            var playerList = _db.TrophyRegistrations.ToList().DistinctBy(a => a.PlayerNIC).ToList();
+
+
             if (playerList != null)
             {
                 return View(playerList);
 
             }
-            return RedirectToAction("Index","Trophy");
+            return RedirectToAction("Index", "Trophy");
         }
 
         public IActionResult Profile(string nic)
         {
             var player = _db.TrophyRegistrations.Where(a => a.PlayerNIC == nic).ToList();
-            return View(player[0]);
+            List<Trophy> appliedTrophies = new List<Trophy>();
+
+            foreach (var item in player)
+            {
+                var trophy = _db.Trophies.Find(item.TrophyID);
+                if (trophy != null)
+                {
+                    appliedTrophies.Add(trophy);
+                }
+            }
+
+            ProfileViewModel profiles = new ProfileViewModel();
+            profiles.registrations = player;
+            profiles.trophies = appliedTrophies;
+
+            return View(profiles);
         }
     }
 }

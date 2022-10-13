@@ -1,11 +1,85 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model TrophyRegistration
+@model ProfileViewModel
 @{
     ViewData["Title"] = "Player profile";
 }
-<h1  class="text-primary">@Model.PlayerFName's Profile:</h1>
+<h1 class="text-primary">@Model.registrations[0].PlayerFName's Profile:</h1>
 <div class="p-5">
+
+    <table class="table table-bordered table-striped" style="width: 100%">
+
+        <tbody>
+            <tr>
+                <th scope="row">
+                    First Name
+                </th>
+                <td>
+                    @Model.registrations[0].PlayerFName
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    Last Name
+                </th>
+                <td>
+                    @Model.registrations[0].PlayerLName
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    Age
+                </th>
+                <td>
+                    @Model.registrations[0].PlayerAge
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    Role
+                </th>
+                <td>
+                    @Model.registrations[0].PlayerRole
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    Player Hand
+                </th>
+                <td>
+                    @Model.registrations[0].PlayerHand
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                    Current Team
+                </th>
+                <td>
+                    @Model.registrations[0].CurrentTeam
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row" rowspan=4>
+                    Applied Trophies
+                </th>
+
+            </tr>
+            @foreach (var item in Model.trophies)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 </div>
