@@ -21,5 +21,7 @@ namespace ESports.Models
         public string PlayerHand { get; set; } //Left/Right handed
         [Required]
         public string CurrentTeam { get; set; } = "NULL";
+        [Required]
+        public int BaseFee { get; set; } = 0;
     }
 }

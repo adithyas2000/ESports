@@ -41,6 +41,16 @@
             <th scope="col">
                 Team
             </th>
+              <th scope="col">
+                Base Fee
+            </th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th scope="col">
+                Actions
+            </th>
+            }
+            
         </tr>
     </thead>
     <tbody>
@@ -53,6 +63,18 @@
                 <td>@item.PlayerRole</td>
                 <td>@item.PlayerHand</td>
                 <td>@item.CurrentTeam</td>
+                 <td>@item.BaseFee</td>
+                  @if (User.Identity.IsAuthenticated)
+                {
+                     <td width="30%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Trophy" asp-action="Update" asp-route-id="@item.PlayerNIC" asp-route-tid="@item.TrophyID" class="btn btn-primary mx-1">
+                           Update Base Fee
+                        </a>
+                         
+                    </div>
+                </td>
+                }
             </tr>
         }
     </tbody>

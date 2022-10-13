@@ -129,5 +129,45 @@ namespace ESports.Controllers
            
            
         }
+
+        // GET
+        public IActionResult Update(string? id, int? tid)
+        {
+          IEnumerable<TrophyRegistration> objCategoryList = _db.TrophyRegistrations;
+            if (id == null || tid == 0)
+            {
+                return NotFound();
+            }
+            var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a => a.TrophyID == tid && a.PlayerNIC == id);
+
+            if (trophyFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(trophyFromDb);
+        }
+
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdatePOST(TrophyRegistration id)
+        {
+            var idN = id;
+            // var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a => a.TrophyID == obj.TrophyID && a.PlayerNIC == obj.PlayerNIC);
+            /*   var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a =>  a.PlayerNIC ==id);
+               if (trophyFromDb == null)
+               {
+                   return NotFound();
+               }
+
+               trophyFromDb.BaseFee= 500;
+               _db.SaveChanges();
+            */
+            return RedirectToAction("Details");
+
+
+        }
+
     }
 }
