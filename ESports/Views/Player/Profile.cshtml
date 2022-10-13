@@ -5,13 +5,13 @@
 @{
     ViewData["Title"] = "Player profile";
 }
-<h1 class="text-primary">@Model.registrations[0].PlayerFName's Profile:</h1>
+<h1 class="text-primary mt-4">@Model.registrations[0].PlayerFName's Profile:</h1>
 <div class="p-5">
 
     <table class="table table-bordered table-striped" style="width: 100%">
 
         <tbody>
-            <tr>
+            <tr class="table-light">
                 <th scope="row">
                     First Name
                 </th>
@@ -20,7 +20,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr class="table-dark">
                 <th scope="row">
                     Last Name
                 </th>
@@ -29,7 +29,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr class="table-light">
                 <th scope="row">
                     Age
                 </th>
@@ -38,7 +38,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr class="table-dark">
                 <th scope="row">
                     Role
                 </th>
@@ -47,7 +47,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr class="table-light">
                 <th scope="row">
                     Player Hand
                 </th>
@@ -56,7 +56,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr class="table-dark">
                 <th scope="row">
                     Current Team
                 </th>
@@ -65,7 +65,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr class="table-light">
                 <th scope="row" rowspan=4>
                     Applied Trophies
                 </th>
@@ -73,7 +73,7 @@
             </tr>
             @foreach (var item in Model.trophies)
             {
-                <tr>
+                <tr class="table-dark">
                     <td>
                         @item.Name
                     </td>

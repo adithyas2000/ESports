@@ -5,12 +5,12 @@
 @{
     ViewData["Title"] = "Player Index";
 }
-<h1 class="text-primary">Player List</h1>
+<h1 class="text-primary mt-4 mb-4">Player List</h1>
 
 
 <table class="table table-bordered table-striped" style="width: 100%">
     <thead>
-        <tr>
+        <tr class="table-secondary">
             <th>
                 Player Name
             </th>
@@ -26,7 +26,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="table-dark">
                 <td>
                     <a asp-controller="Player" asp-action="Profile" asp-route-nic=@item.PlayerNIC>
                         @item.PlayerFName @item.PlayerLName

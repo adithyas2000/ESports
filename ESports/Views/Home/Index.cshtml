@@ -1,8 +1,36 @@
-﻿@{
+﻿@using ESports.Models
+@model IEnumerable<Trophy>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 mt-4 text-success">Welcome To E-SPORT</h1>
+    <h5 class="mb-4">Find All The Open Trophies</h5>
 </div>
+
+
+
+<div class="row align-content-center ">
+    
+         @foreach (var obj in Model)
+        {
+         
+                        <div class="card card border-light text-white bg-dark mb-3 mx-4 col-3">
+  <div class="card-header" style="max-width: 25rem;">@obj.Venue</div>
+  <div class="card-body">
+    <h4 class="card-title">@obj.Name</h4>
+    <p class="card-text">Starting Date -  @obj.StartDate </p>
+     <p class="card-text">Ending Date -  @obj.EndDate </p>
+      <p class="card-text text-warning">Registration Closing Date -  @obj.ClosingDate </p>
+  </div>
+</div>
+           
+
+        }
+   
+</div>
+
+ 
+ 
+                      
