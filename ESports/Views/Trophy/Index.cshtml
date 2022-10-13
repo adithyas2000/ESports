@@ -13,7 +13,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div class="col-6 text-end">
-                <a asp-controller="Trophy" asp-action="Create" class="btn btn-primary">Add New Trophy</a>
+                <a asp-controller="Trophy" asp-action="Create" class="btn btn-info">Add New Trophy</a>
         </div>
         }
     </div>
@@ -21,8 +21,8 @@
 
 <table class="table table-bordered table-striped" style="width: 100%">
     <thead>
-        <tr>
-            <th>
+        <tr class="table-secondary">
+            <th hidden>
                 Trophy ID
             </th>
             <th>
@@ -55,8 +55,8 @@
     <tbody>
         @foreach (var obj in Model)
         {
-            <tr>
-                <td>
+            <tr class="table-dark">
+                <td hidden>
                     @obj.Id
                 </td>
                 <td width="20%">
@@ -81,7 +81,7 @@
                 {
                      <td width="30%">
                     <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Trophy" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-1">
+                        <a asp-controller="Trophy" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-light mx-1">
                             Edit
                         </a>
                          <a asp-controller="Trophy" asp-action="Close" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
@@ -95,7 +95,7 @@
                 {
                      <td width="30%">
                     <div class="w-75 btn-group" role="group">
-                        <a  class="btn-dark btn">Closed</a>
+                        <a  class="btn-warning btn">Closed</a>
                         
                     </div>
                 </td>

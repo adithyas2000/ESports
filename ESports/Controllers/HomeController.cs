@@ -1,4 +1,5 @@
-﻿using ESports.Models;
+﻿using ESports.Data;
+using ESports.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,19 @@ namespace ESports.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _db;
+     
+        public HomeController(ILogger<HomeController> logger, AppDbContext db)
         {
             _logger = logger;
+            _db = db;
+          
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Trophy> objCategoryList = _db.Trophies.Where(a => a.isClosed == false).ToList();
+            return View(objCategoryList);
         }
 
         public IActionResult Privacy()
