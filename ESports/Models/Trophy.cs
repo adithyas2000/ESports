@@ -30,5 +30,7 @@ namespace ESports.Models
         public DateTime ClosingDate { get; set; } 
 
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+
+        public Boolean isClosed { get; set; } = false;
     }
 }

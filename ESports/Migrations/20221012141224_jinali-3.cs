@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ESports.Migrations.AppDb
+namespace ESports.Migrations
 {
-    public partial class NewDB : Migration
+    public partial class jinali3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,8 @@ namespace ESports.Migrations.AppDb
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ClosingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isClosed = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

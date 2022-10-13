@@ -4,18 +4,16 @@ using ESports.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ESports.Migrations.AppDb
+namespace ESports.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221012115926_NewDB")]
-    partial class NewDB
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,6 +49,9 @@ namespace ESports.Migrations.AppDb
                     b.Property<string>("Venue")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isClosed")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
