@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ESports.Migrations
 {
-    public partial class jinali4 : Migration
+    public partial class updateIsClosed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
