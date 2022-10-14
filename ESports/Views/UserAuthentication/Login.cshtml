@@ -1,0 +1,48 @@
+﻿
+@model identityRoleBased.Models.DTO.LoginModel
+
+
+
+<div class="row">
+       <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h1 class="mt-5">Login</h1>
+        <section>
+            <form asp-action="Login" id="account" method="post">
+                <h5 class="align-items-center justify-content-center">Please Login to continue.</h5>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" >
+                      <label asp-for="UserName" class="form-label mt-4">Team Name</label>
+                  
+                    <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="true" />
+                    <span class="text-danger"></span>
+                  
+                </div>
+                <div class="form-group mb-4">
+                     <label asp-for="Password" class="form-label mt-4"></label>
+                    <input type="password" asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                   
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="msg">
+                        @TempData["msg"]
+                    </div>
+                }
+
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-outline-primary">Login</button>
+                </div>
+               
+            </form>
+        </section>
+    </div>
+   
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

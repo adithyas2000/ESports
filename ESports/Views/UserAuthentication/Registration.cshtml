@@ -1,0 +1,57 @@
+﻿
+@model identityRoleBased.Models.DTO.RegistrationModel
+
+
+
+<div class="row">
+     <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2 class="mt-4">Registration</h2>
+        <form asp-action="Registration" id="registerForm" method="post">
+            <h6>Register a new Team</h6>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" >
+                <label asp-for="Name" class="form-label mt-1">Username</label>
+                <input asp-for="Name" class="form-control" autocomplete="username" aria-required="true" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="form-label mt-2">Team Name</label>
+                <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="true" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="Email" class="form-label mt-2"></label>
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+           
+            <div class="form-group">
+                <label asp-for="Password" class="form-label mt-2"></label>
+                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="form-label mt-2 mb-2"></label>
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            
+                @if (TempData["msg"] != null)
+                {
+                    <div class="msg">
+                        @TempData["msg"]
+                    </div>
+                }
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-outline-primary mt-4">Register</button>
+        </form>
+    </div>
+   
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

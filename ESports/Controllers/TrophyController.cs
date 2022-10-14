@@ -153,6 +153,7 @@ namespace ESports.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UpdatePOST(TrophyRegistration id)
         {
+            
             var idN = id;
             // var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a => a.TrophyID == obj.TrophyID && a.PlayerNIC == obj.PlayerNIC);
             /*   var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a =>  a.PlayerNIC ==id);
