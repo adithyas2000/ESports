@@ -151,20 +151,21 @@ namespace ESports.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdatePOST(TrophyRegistration id)
+        public IActionResult UpdatePOST(TrophyRegistration updatedTrophy)
         {
-            
-            var idN = id;
-            // var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a => a.TrophyID == obj.TrophyID && a.PlayerNIC == obj.PlayerNIC);
-            /*   var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a =>  a.PlayerNIC ==id);
+
+            //var idN = id;
+             var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a => a.TrophyID == updatedTrophy.TrophyID && a.PlayerNIC == updatedTrophy.PlayerNIC);
+               //var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a =>  a.PlayerNIC ==id);
+
                if (trophyFromDb == null)
                {
                    return NotFound();
                }
 
-               trophyFromDb.BaseFee= 500;
+               trophyFromDb.BaseFee= updatedTrophy.BaseFee;
                _db.SaveChanges();
-            */
+            
             return RedirectToAction("Details");
 
 
