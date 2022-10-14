@@ -44,7 +44,7 @@
               <th scope="col">
                 Base Fee
             </th>
-            @if (User.Identity.IsAuthenticated)
+            @if (User.IsInRole("admin"))
             {
                 <th scope="col">
                 Actions
@@ -69,7 +69,7 @@
                 <td>@item.PlayerHand</td>
                 <td>@item.CurrentTeam</td>
                  <td>@item.BaseFee</td>
-                  @if (User.Identity.IsAuthenticated)
+                  @if (User.IsInRole("admin"))
                 {
                      <td width="30%">
                     <div class="w-75 btn-group" role="group">
