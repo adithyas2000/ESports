@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ESports.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221013023133_jinali-4")]
-    partial class jinali4
+    [Migration("20221014063258_updateIsClosed")]
+    partial class updateIsClosed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
