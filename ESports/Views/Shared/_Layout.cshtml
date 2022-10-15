@@ -28,7 +28,14 @@
         <li class="nav-item">
         <a class="nav-link text-light" asp-area="" asp-controller="Player" asp-action="Index">Players</a>
         </li>
-     
+         @if (User.IsInRole("user"))
+                        {
+                            
+<li class="nav-item">
+        <a class="nav-link text-light" asp-area="" asp-controller="Team" asp-action="Index">Registered Trophies</a>
+        </li>
+                        }
+
       </ul>
     <ul class="navbar-nav">
                         @if (User.IsInRole("admin"))

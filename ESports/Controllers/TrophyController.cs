@@ -154,9 +154,7 @@ namespace ESports.Controllers
         public IActionResult UpdatePOST(TrophyRegistration updatedTrophy)
         {
 
-            //var idN = id;
              var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a => a.TrophyID == updatedTrophy.TrophyID && a.PlayerNIC == updatedTrophy.PlayerNIC);
-               //var trophyFromDb = _db.TrophyRegistrations.FirstOrDefault(a =>  a.PlayerNIC ==id);
 
                if (trophyFromDb == null)
                {

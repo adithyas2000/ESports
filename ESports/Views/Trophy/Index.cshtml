@@ -65,22 +65,34 @@
                     @obj.Name
                     </a>
                 </td>
-                <td width="20%">
+                <td width="10%">
                     @obj.Venue
                 </td>
-                <td width="30%">
+                <td width="15%">
                     @obj.StartDate
                 </td>
-                <td width="30%">
+                <td width="15%">
                     @obj.EndDate
                 </td>
-                <td width="30%">
+                <td width="20%">
                     @obj.ClosingDate
                 </td>
                 @if (User.IsInRole("admin"))
                 {
-                     <td width="30%">
-                    <div class="w-75 btn-group" role="group">
+                     <td width="100%">
+                    @if (obj.isClosed)
+                        {
+                              <div class="w-75 btn-group" role="group">
+                        <a  class="btn-warning btn">No Actions Allow</a>
+                        
+                    </div>
+                        }
+                    else
+                    {
+                         <div class="w-100 btn-group" role="group">
+                          <a asp-controller="TrophyTeam" asp-action="Add" asp-route-id="@obj.Id" class="btn btn-primary mx-1">
+                            Add Team
+                        </a>
                         <a asp-controller="Trophy" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-light mx-1">
                             Edit
                         </a>
@@ -88,6 +100,10 @@
                             Close
                         </a>
                     </div>
+                    }
+
+                    
+                    
                 </td>
                 }
 

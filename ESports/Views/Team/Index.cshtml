@@ -1,0 +1,96 @@
+﻿@using ESports.Models
+@model TrophyTeamTrophyListViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class=" row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Trophy List</h2>
+        </div>
+     
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width: 100%">
+    <thead>
+        <tr class="table-secondary">
+            <th hidden>
+                Trophy ID
+            </th>
+            <th>
+                Trophy Name
+            </th>
+            <th>
+                Event Venue
+            </th>
+            <th>
+                Event Starting Date
+            </th>
+            <th>
+                Event Ending Date
+            </th>
+            <th>
+                Registration/Bidding Closing Date
+            </th>
+           
+                 <th>
+                Actions
+            </th>
+            
+          
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in @Model.trophy)
+        {
+            <tr class="table-dark">
+                <td hidden>
+                    @obj.Id
+                </td>
+                <td width="20%">
+                    <a asp-controller="Trophy" asp-action="Details" asp-route-tid=@obj.Id>
+
+                    @obj.Name
+                    </a>
+                </td>
+                <td width="10%">
+                    @obj.Venue
+                </td>
+                <td width="15%">
+                    @obj.StartDate
+                </td>
+                <td width="15%">
+                    @obj.EndDate
+                </td>
+                <td width="20%">
+                    @obj.ClosingDate
+                </td>
+              
+                     <td width="100%">
+                    @if (obj.isClosed)
+                        {
+                              <div class="w-75 btn-group" role="group">
+                        <a  class="btn-warning btn">Bidding is Closed</a>
+                        
+                    </div>
+                        }
+                    else
+                    {
+                         <div class="w-100 btn-group" role="group">
+                          <a asp-controller="" asp-action="" asp-route-id="@obj.Id" class="btn btn-primary mx-1">
+                            Bid For Players
+                        </a>
+                        
+                    </div>
+                    }
+  
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+ 
+                      

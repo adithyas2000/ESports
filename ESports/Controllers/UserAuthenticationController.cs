@@ -1,4 +1,6 @@
-﻿using identityRoleBased.Models;
+﻿using ESports.Data;
+using ESports.Models;
+using identityRoleBased.Models;
 using identityRoleBased.Models.DTO;
 using identityRoleBased.Repositories.Abstract;
 using Microsoft.AspNetCore.Authorization;
@@ -10,10 +12,12 @@ namespace identityRoleBased.Controllers
     public class UserAuthenticationController : Controller
     {
         private readonly IUserAuthenticationService _service;
+        private readonly AppDbContext _db;
 
-        public UserAuthenticationController(IUserAuthenticationService _service)
+        public UserAuthenticationController(IUserAuthenticationService _service, AppDbContext db)
         {
             this._service = _service;
+            this._db = db;  
         }
 
    
@@ -34,6 +38,14 @@ namespace identityRoleBased.Controllers
             var result = await _service.RegistrationAsync(model);
 
             TempData["msg"] = result.Message;
+            var t = new Team
+            {
+                Id = result.UserId,
+                Name = model.Name,
+            };
+           
+            _db.Teams.Add(t);
+            _db.SaveChanges();
             return RedirectToAction(nameof(Login));
         }
 
@@ -54,11 +66,13 @@ namespace identityRoleBased.Controllers
 
             if (result.StatusCode == 1)
             {
+                var userid = result.UserId;
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 TempData["msg"] = result.Message;
+              
                 return RedirectToAction(nameof(Login));
             }
         }

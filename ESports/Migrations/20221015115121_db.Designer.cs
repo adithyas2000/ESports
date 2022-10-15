@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ESports.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221014063258_updateIsClosed")]
-    partial class updateIsClosed
+    [Migration("20221015115121_db")]
+    partial class db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,41 @@ namespace ESports.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("ESports.Models.PlayersBid", b =>
+                {
+                    b.Property<int>("TrophyID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<string>("TeamId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("BidAmount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TrophyID", "TeamId");
+
+                    b.ToTable("PlayersBids");
+                });
+
+            modelBuilder.Entity("ESports.Models.Team", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teams");
+                });
 
             modelBuilder.Entity("ESports.Models.Trophy", b =>
                 {
@@ -99,6 +134,27 @@ namespace ESports.Migrations
                     b.HasKey("TrophyID", "PlayerNIC");
 
                     b.ToTable("TrophyRegistrations");
+                });
+
+            modelBuilder.Entity("ESports.Models.TrophyTeam", b =>
+                {
+                    b.Property<int>("TrophyID")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    b.Property<string>("TeamId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("MaxPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpentAmount")
+                        .HasColumnType("int");
+
+                    b.HasKey("TrophyID", "TeamId");
+
+                    b.ToTable("TrophyTeams");
                 });
 #pragma warning restore 612, 618
         }

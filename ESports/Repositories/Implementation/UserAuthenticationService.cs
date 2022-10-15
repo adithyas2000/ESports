@@ -98,12 +98,14 @@ namespace identityRoleBased.Repositories.Implementation
             {
                 status.StatusCode = 0;
                 status.Message = "Creation failed";
+                
                 return status;
             }
+            var usernew = await userManager.FindByNameAsync(model.UserName);
 
             // role management 
 
-            if(!await roleManager.RoleExistsAsync(model.Role))
+            if (!await roleManager.RoleExistsAsync(model.Role))
             {
                 await roleManager.CreateAsync(new IdentityRole(model.Role));
             }
@@ -112,9 +114,11 @@ namespace identityRoleBased.Repositories.Implementation
             {
                 await userManager.AddToRoleAsync(user,model.Role);
             }
+           
 
             status.StatusCode = 1;
             status.Message = "User has registered successfully";
+            status.UserId = usernew.Id;
             return status;
         }
     }

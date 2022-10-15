@@ -5,10 +5,36 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ESports.Migrations
 {
-    public partial class updateIsClosed : Migration
+    public partial class db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "PlayersBids",
+                columns: table => new
+                {
+                    TrophyID = table.Column<int>(type: "int", nullable: false),
+                    TeamId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PlayerId = table.Column<int>(type: "int", nullable: false),
+                    BidAmount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayersBids", x => new { x.TrophyID, x.TeamId });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teams",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teams", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Trophies",
                 columns: table => new
@@ -46,15 +72,38 @@ namespace ESports.Migrations
                 {
                     table.PrimaryKey("PK_TrophyRegistrations", x => new { x.TrophyID, x.PlayerNIC });
                 });
+
+            migrationBuilder.CreateTable(
+                name: "TrophyTeams",
+                columns: table => new
+                {
+                    TrophyID = table.Column<int>(type: "int", nullable: false),
+                    TeamId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MaxPrice = table.Column<int>(type: "int", nullable: false),
+                    SpentAmount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TrophyTeams", x => new { x.TrophyID, x.TeamId });
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "PlayersBids");
+
+            migrationBuilder.DropTable(
+                name: "Teams");
+
+            migrationBuilder.DropTable(
                 name: "Trophies");
 
             migrationBuilder.DropTable(
                 name: "TrophyRegistrations");
+
+            migrationBuilder.DropTable(
+                name: "TrophyTeams");
         }
     }
 }
