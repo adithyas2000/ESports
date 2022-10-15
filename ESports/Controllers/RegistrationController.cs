@@ -50,6 +50,7 @@ namespace ESports.Controllers
             if (recordExists == null)
             {
                 _db.TrophyRegistrations.Add(enrollData.TrophyRegistration);
+                
             }
             else
             {
