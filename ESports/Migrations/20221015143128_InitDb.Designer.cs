@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ESports.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221015115121_db")]
-    partial class db
+    [Migration("20221015143128_InitDb")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

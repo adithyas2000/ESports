@@ -11,33 +11,33 @@
         <hr />
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
-            <label asp-for="TrophyRegistration.PlayerFName"></label>
-            <input asp-for="TrophyRegistration.PlayerFName" class="form-control" />
+            <label asp-for="TrophyRegistration.PlayerFName">Player FIrst Name</label>
+            <input asp-for="TrophyRegistration.PlayerFName" class="form-control"  required/>
             @*<span asp-validation-for="Name" class="text-danger"></span>*@
         </div>
           <div class="mb-3">
-            <label asp-for="TrophyRegistration.PlayerLName">Player First Name</label>
-            <input asp-for="TrophyRegistration.PlayerLName" class="form-control" />
+            <label asp-for="TrophyRegistration.PlayerLName">Player Last Name</label>
+            <input asp-for="TrophyRegistration.PlayerLName" class="form-control"  required/>
              @*<span asp-validation-for="Venue" class="text-danger"></span>*@
         </div>
          <div class="mb-3">
             <label asp-for="TrophyRegistration.PlayerNIC">Player NIC</label>
-            <input asp-for="TrophyRegistration.PlayerNIC" class="form-control" />
+            <input asp-for="TrophyRegistration.PlayerNIC" class="form-control"  required/>
             @*<span asp-validation-for="StartDate" class="text-danger"></span>*@
         </div>
           <div class="mb-3">
             <label asp-for="TrophyRegistration.PlayerAge">Player Age</label>
-            <input asp-for="TrophyRegistration.PlayerAge" class="form-control" />
+            <input asp-for="TrophyRegistration.PlayerAge" class="form-control"  required/>
              @*<span asp-validation-for="EndDate" class="text-danger"></span>*@
         </div>
          <div class="mb-3">
             <label asp-for="TrophyRegistration.PlayerRole"></label>
-            <input asp-for="TrophyRegistration.PlayerRole" class="form-control" />
+            <input asp-for="TrophyRegistration.PlayerRole" class="form-control" required />
             @*<span asp-validation-for="ClosingDate" class="text-danger"></span>*@
         </div>
         <div class="mb-3">
             <label asp-for="TrophyRegistration.PlayerHand"></label>
-            <input asp-for="TrophyRegistration.PlayerHand" class="form-control" />
+            <input asp-for="TrophyRegistration.PlayerHand" class="form-control"  required/>
             @*<span asp-validation-for="ClosingDate" class="text-danger"></span>*@
         </div>
         
@@ -45,7 +45,7 @@
             <input type="hidden" asp-for="TrophyRegistration.TrophyID" value="" />
         </div>*@
           <div class="mb-3">
-              <input asp-for="TrophyRegistration.TrophyID" value=@Model.Trophy.Id/>
+              <input type="hidden" asp-for="TrophyRegistration.TrophyID" value=@Model.Trophy.Id required/>
            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
            <a  asp-controller="Trophy" asp-action="Index" class="btn btn-secondary" style="width:150px">Back</a>
         </div>

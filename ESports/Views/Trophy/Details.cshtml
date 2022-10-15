@@ -41,16 +41,22 @@
             <th scope="col">
                 Team
             </th>
-              <th scope="col">
+            <th scope="col">
                 Base Fee
             </th>
             @if (User.IsInRole("admin"))
             {
                 <th scope="col">
-                Actions
-            </th>
+                    Actions
+                </th>
             }
-            
+            @if (User.IsInRole("user"))
+            {
+                <th scope="col">
+                    Bid
+                </th>
+            }
+
         </tr>
     </thead>
     <tbody>
@@ -68,17 +74,30 @@
                 <td>@item.PlayerRole</td>
                 <td>@item.PlayerHand</td>
                 <td>@item.CurrentTeam</td>
-                 <td>@item.BaseFee</td>
-                  @if (User.IsInRole("admin"))
+                <td>@item.BaseFee</td>
+                @if (User.IsInRole("admin"))
                 {
-                     <td width="30%">
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Trophy" asp-action="Update" asp-route-id="@item.PlayerNIC" asp-route-tid="@item.TrophyID" class="btn btn-primary mx-1">
-                           Update Base Fee
-                        </a>
-                         
-                    </div>
-                </td>
+                    <td width="30%">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Trophy" asp-action="Update" asp-route-id="@item.PlayerNIC" asp-route-tid="@item.TrophyID" class="btn btn-primary mx-1">
+                                Update Base Fee
+                            </a>
+
+                        </div>
+                    </td>
+                }
+                @if (User.IsInRole("user"))
+                {
+                    <td>
+                        <form method="post">
+                            
+                            <input asp-for=bidValue id="bidValue" type="number" min=@item.BaseFee value=@item.BaseFee />
+                            <input type="submit" asp-controller="Bid" asp-action="Create" class="btn btn-primary mx-1" value="Bid for player"/>
+                            <input type="hidden" asp-for=team value=@User.Identity.Name/>
+                            <input type="hidden" asp-for=playerNIC value=@item.PlayerNIC/>
+                            <input type="hidden" asp-for=trophyId value=@Model.trophy.Id/>
+                        </form>
+                    </td>
                 }
             </tr>
         }

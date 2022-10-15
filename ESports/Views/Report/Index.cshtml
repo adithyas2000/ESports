@@ -1,0 +1,133 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ReportViewModel
+@if (User.IsInRole("admin"))
+{
+    <h1>Trophies</h1>
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
+            <tr class="table-secondary">
+                <th hidden>
+                    Trophy ID
+                </th>
+                <th>
+                    Trophy Name
+                </th>
+                <th>
+                    Event Venue
+                </th>
+                <th>
+                    Event Starting Date
+                </th>
+                <th>
+                    Event Ending Date
+                </th>
+                <th>
+                    Registration/Bidding Closing Date
+                </th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            @foreach (var obj in Model.TrophyList)
+            {
+                <tr class="table-dark">
+                    <td hidden>
+                        @obj.Id
+                    </td>
+                    <td width="20%">
+                        <a asp-controller="Trophy" asp-action="Details" asp-route-tid=@obj.Id>
+
+                            @obj.Name
+                        </a>
+                    </td>
+                    <td width="10%">
+                        @obj.Venue
+                    </td>
+                    <td width="15%">
+                        @obj.StartDate
+                    </td>
+                    <td width="15%">
+                        @obj.EndDate
+                    </td>
+                    <td width="20%">
+                        @obj.ClosingDate
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+
+
+
+    </table>
+
+    <h1>Players</h1>
+
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
+            <tr class="table-secondary">
+                <th>
+                    Player Name
+                </th>
+                <th>
+                    Player Role
+                </th>
+                <th>
+                    Player Availablity
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PlayerList)
+            {
+                <tr class="table-dark">
+                    <td>
+                        <a asp-controller="Player" asp-action="Profile" asp-route-nic=@item.PlayerNIC>
+                            @item.PlayerFName @item.PlayerLName
+                        </a>
+                    </td>
+                    <td width="20%">
+                        @item.PlayerRole
+                    </td>
+
+                    @if (item.CurrentTeam == "NULL")
+                    {
+                        <td width="20%">
+                            Available
+                        </td>
+                    }
+                    else
+                    {
+                        <td width="20%">
+                            Sold to @item.CurrentTeam
+                        </td>
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h1>List of teams</h1>
+
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
+
+            @foreach (var item in Model.TeamList)
+            {
+                <tr class="table-secondary">
+                    <th>
+                        @item.Name
+                    </th>
+                </tr>
+            }
+
+
+        </thead>
+    </table>
+}

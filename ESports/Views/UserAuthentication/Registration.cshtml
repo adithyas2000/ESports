@@ -6,7 +6,20 @@
 <div class="row">
      <div class="col-md-4"></div>
     <div class="col-md-4">
+            @if (TempData["msg"] != null)
+         
+        {
+               
+                  <div class="alert alert-dismissible alert-warning">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                           <p class="mb-0">  @TempData["msg"]</p>
+                    </div>
+            }
+                  
+               
         <h2 class="mt-4">Registration</h2>
+         
+            
         <form asp-action="Registration" id="registerForm" method="post">
             <h6>Register a new Team</h6>
             <hr />
@@ -39,13 +52,7 @@
                 <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-            
-                @if (TempData["msg"] != null)
-                {
-                    <div class="msg">
-                        @TempData["msg"]
-                    </div>
-                }
+           
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-outline-primary mt-4">Register</button>
         </form>
     </div>
