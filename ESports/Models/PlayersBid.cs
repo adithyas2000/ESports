@@ -13,7 +13,8 @@ namespace ESports.Models
         public string TeamId { get; set; }
 
         [Required]
-       
+
+        [Key, Column(Order = 2)]
         public int PlayerId { get; set; }
 
         [Required]

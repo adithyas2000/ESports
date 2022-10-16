@@ -17,10 +17,10 @@ namespace identityRoleBased.Controllers
         public UserAuthenticationController(IUserAuthenticationService _service, AppDbContext db)
         {
             this._service = _service;
-            this._db = db;  
+            this._db = db;
         }
 
-   
+
 
         public IActionResult Registration()
         {
@@ -37,15 +37,20 @@ namespace identityRoleBased.Controllers
             model.Role = "user";
             var result = await _service.RegistrationAsync(model);
 
-            TempData["msg"] = result.Message;
+            if (result.StatusCode == 0)
+            {
+                TempData["msg"] = result.Message;
+                return View(model);
+            }
             var t = new Team
             {
                 Id = result.UserId,
                 Name = model.Name,
             };
-           
+
             _db.Teams.Add(t);
             _db.SaveChanges();
+
             return RedirectToAction(nameof(Login));
         }
 
@@ -71,8 +76,8 @@ namespace identityRoleBased.Controllers
             }
             else
             {
+
                 TempData["msg"] = result.Message;
-              
                 return RedirectToAction(nameof(Login));
             }
         }

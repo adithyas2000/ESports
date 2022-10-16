@@ -77,6 +77,11 @@ namespace ESports.Controllers
                 return RedirectToAction("Index", "Trophy");
             }
         }
+        [HttpPost]
+        public IActionResult Details()
+        {
+            return View();
+        }
 
 
         // POST

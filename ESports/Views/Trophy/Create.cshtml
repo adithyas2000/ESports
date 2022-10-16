@@ -8,27 +8,27 @@
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" />
+            <input asp-for="Name" class="form-control" required />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
           <div class="mb-3">
             <label asp-for="Venue">Event Venue</label>
-            <input asp-for="Venue" class="form-control" />
+            <input asp-for="Venue" class="form-control"  required/>
              <span asp-validation-for="Venue" class="text-danger"></span>
         </div>
          <div class="mb-3">
             <label asp-for="StartDate">Event Starting Date</label>
-            <input asp-for="StartDate" class="form-control" type="datetime"/>
+            <input asp-for="StartDate" class="form-control" type="datetime" required/>
             <span asp-validation-for="StartDate" class="text-danger"></span>
         </div>
           <div class="mb-3">
             <label asp-for="EndDate">Event Ending Date</label>
-            <input asp-for="EndDate" class="form-control" type="datetime" />
+            <input asp-for="EndDate" class="form-control" type="datetime"  required/>
              <span asp-validation-for="EndDate" class="text-danger"></span>
         </div>
          <div class="mb-3">
             <label asp-for="ClosingDate"></label>
-            <input asp-for="ClosingDate" class="form-control" type="datetime"/>
+            <input asp-for="ClosingDate" class="form-control" type="datetime" required/>
             <span asp-validation-for="ClosingDate" class="text-danger"></span>
         </div>
           <div class="mb-3">
